@@ -22,10 +22,7 @@ function play() {
     hideError();
     hideResults();
     
-    //vars to roll the dice
-    /*var rollDiceOne = Math.floor(Math.random() * 6) + 1;
-    var rollDiceTwo = Math.floor(Math.random() * 6) + 1;
-    var rollDice = rollDiceOne + rollDiceTwo;*/
+    
     
     //var for the user to choose the amount they start with from the form
     var startingBet = document.getElementById("startingbet").value;
@@ -36,11 +33,15 @@ function play() {
     //var for all the bets to be stored
     var betsArray = [];
 
+
+    //show error if number entered isn't an integer > 0
     if ((startingBet == 0) || (startingBet <0) || (startingBet % 1 !== 0)) {
         showError();
         hideResults();
     }
 
+
+    //roll the dice
     function roll() {
 
         rollDiceOne = Math.floor(Math.random() * 6) + 1;
@@ -68,27 +69,39 @@ function play() {
             bet--
             
         }
+
+        //push each new dollar amount into the betsArray
         betsArray.push(bet)
         console.log(bet);
 
     }
 
+    //find the max amount of money won in the betsArray
     var findMax = Math.max.apply(Math, betsArray);
+    //find the number of rolls at the highest amount won by finding the index of that
     var findIndexOfMax = betsArray.indexOf(findMax) + 1;
+    //total number of rolls equals however many bets were pushed to the betsArray
     var numberOfRolls = betsArray.length;
     
 
     
 
     function showResults() {
+        //give the user the option to play again; change what the button says to "play again"
         document.getElementById("playButton").innerHTML = "Play Again";
+        //display the results table
         document.getElementById("results").style.display = "inline";
+        //show the starting bet
         document.getElementById("resultsstartingbet").innerHTML = "$" + startingBet +".00";
+        //show the number of total rolls
         document.getElementById("resultstotalrolls").innerHTML = numberOfRolls;
+        //show the max amount won
         document.getElementById("resultshighest").innerHTML = "$" +     findMax + ".00";
+        //show the index of the highest amount won
         document.getElementById("resultsrollhighest").innerHTML = findIndexOfMax;
     };
 
+    //only show results if there was a valid number entered
     if ((startingBet > 0) && (startingBet % 1 ==0)) {
 
         showResults();
