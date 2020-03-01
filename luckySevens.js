@@ -29,9 +29,14 @@ function play() {
     
     //var for the new amount, starting with the startingBet
     var bet = startingBet;
+
+    console.log(startingBet);
     
     //var for all the bets to be stored
     var betsArray = [];
+    console.log(betsArray);
+
+    betsArray.push(startingBet);
 
 
     //show error if number entered isn't an integer > 0
@@ -71,7 +76,8 @@ function play() {
         }
 
         //push each new dollar amount into the betsArray
-        betsArray.push(bet)
+        //betsArray.push(startingBet);
+        betsArray.push(bet);
         console.log(bet);
 
     }
@@ -79,9 +85,12 @@ function play() {
     //find the max amount of money won in the betsArray
     var findMax = Math.max.apply(Math, betsArray);
     //find the number of rolls at the highest amount won by finding the index of that
-    var findIndexOfMax = betsArray.indexOf(findMax) + 1;
+    var findIndexOfMax = betsArray.indexOf(findMax);
+    //var findIndexOfMax = betsArray.indexOf(findMax) + 1;
+
+    
     //total number of rolls equals however many bets were pushed to the betsArray
-    var numberOfRolls = betsArray.length;
+    var numberOfRolls = betsArray.length - 1;
     
 
     
@@ -99,15 +108,25 @@ function play() {
         document.getElementById("resultshighest").innerHTML = "$" +     findMax + ".00";
         //show the index of the highest amount won
         document.getElementById("resultsrollhighest").innerHTML = findIndexOfMax;
-    };
 
+        if (findMax == startingBet) {
+            
+            findIndexOfMax = 0;
+            document.getElementById("resultsrollhighest").innerHTML = 0;
+        }
+    };
+    
     //only show results if there was a valid number entered
     if ((startingBet > 0) && (startingBet % 1 ==0)) {
-
+        
         showResults();
-
+        
     }
-    
 
+    
+    
+    
+    
+    
 }
 
