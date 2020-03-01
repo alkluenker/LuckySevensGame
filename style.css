@@ -1,0 +1,12 @@
+#resultscaption {
+    caption-side: top;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+
+
+#error {
+    font-size: 40px;
+    color: red;
+}
