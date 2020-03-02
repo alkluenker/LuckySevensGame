@@ -117,7 +117,7 @@ function play() {
     };
     
     //only show results if there was a valid number entered
-    if ((startingBet > 0) && (startingBet % 1 ==0)) {
+    if ((startingBet > 0) && (startingBet % 1 == 0)) {
         
         showResults();
         
